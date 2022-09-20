@@ -4,17 +4,9 @@ import Formulario from './components/Formulario'
 import ListaDeTareas from './components/ListaDeTareas'
 
 function App() {
-  const [tareas, setTareas] = useState ([]);
+  const [tareas, setTareas] = useState (JSON.parse(localStorage.getItem('tareas')) ?? []);
   const [unaTarea, setUnaTarea] = useState ({})
 
-
-  useEffect( () => {
-    const getLocalStorage = () => {
-      const tareasLocalStorage = JSON.parse(localStorage.getItem('tareas')) ?? [];
-      setTareas(tareasLocalStorage)
-    }
-    getLocalStorage()
-  }, [])
 
   useEffect( () => {
     localStorage.setItem('tareas', JSON.stringify(tareas))
