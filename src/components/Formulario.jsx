@@ -76,7 +76,7 @@ const Formulario = ({
 
   return (
     <div
-    className='bg-slate-500 p-1 md:w-1/2 md:mr-4 rounded-lg text-center shadow-md'
+    className='bg-slate-500 p-1 w-full md:w-1/2 md:mr-4 rounded-lg text-center shadow-md'
     >
 
       <p

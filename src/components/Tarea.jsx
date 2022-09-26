@@ -12,6 +12,8 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
         if(response){
             eliminarTarea(tarea.id)
         }
+
+    setUnaTarea({})
     }
 
   return (

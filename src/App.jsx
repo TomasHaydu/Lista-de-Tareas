@@ -28,7 +28,7 @@ function App() {
         <Header />
       </div>
       <div
-      className='md:flex p-10 '
+      className='flex-col p-10 '
       >
         <Formulario 
           tareas = {tareas}
