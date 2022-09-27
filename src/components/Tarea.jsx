@@ -59,45 +59,45 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
         
         <div className='flex justify-around'>
             <div
-            className='flex p-2 w-28 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer'
+            className='flex p-2 w-20 md:w-28 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer'
             onClick={() => setUnaTarea(tarea)}
             >
                 <button 
                 type='button'
-                className=' font-mono text-gray-200'
+                className=' font-mono text-sm md:text-base text-gray-200'
                 >Editar
                 </button>
 
                 <img 
                 src={Edit} alt="edit"
-                className='w-6 h-6 ml-4 mr-4 blacktowhite'
+                className='w-4 h-4 md:w-6 md:h-6 ml-1 md:ml-4 mr-4 blacktowhite'
                 />
 
             </div>
 
             <div
-            className='flex p-2 w-32 bg-red-700 rounded-md  mb-2 hover:bg-red-600 cursor-pointer'
+            className='flex p-2 w-5/12 md:w-32 bg-red-700 rounded-md  mb-2 hover:bg-red-600 cursor-pointer'
             onClick={handleDelete}
             >
             <button 
             type='button'
-            className=' font-mono text-gray-200 no-underline'
+            className=' font-mono text-sm md:text-base text-gray-200 no-underline'
             >Eliminar
             </button>
 
             <img 
             src={Delete} alt="delete"
-            className='w-6 h-6 ml-4 mr-4 blacktowhite'
+            className='w-4 h-4 md:w-6 md:h-6 md:ml-4 mr-4 blacktowhite'
              />
 
             </div>
 
-            <div className="flex items-center mr-4">
+            <div className="flex items-center  md:mr-4">
                 <input id="teal-checkbox" 
                 type="checkbox" value=""
                 checked={isChecked}
                 onChange={isChecked===false ? ()=> setIsChecked(true):()=> setIsChecked(false)}
-                className=" mb-2 w-6 h-6  text-teal-600 bg-gray-100 rounded-md
+                className=" mb-2 h-5 w-5 md:w-6 md:h-6  text-teal-600 bg-gray-100 rounded-md
                  border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600
                   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
             </div>

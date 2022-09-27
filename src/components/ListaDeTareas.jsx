@@ -3,10 +3,10 @@ import Tarea from "./Tarea"
 const ListaDeTareas = ({tareas, unaTarea, setUnaTarea, eliminarTarea}) => {
   return (
     <div
-    className='bg-slate-500 md:ml-4 md:w-1/2 rounded-lg shadow-md max-h-max'
+    className='bg-slate-500 pt-4 mt-8 md:mt-0 md:ml-4 md:w-1/2 rounded-lg shadow-md max-h-max'
     >
       <p
-      className='font-bold text-gray-200 text-2xl mb-6 mt-6 text-center'
+      className='font-bold text-gray-200 text-2xl md:mb-6 md:mt-6 text-center'
       >
         Sus tareas :
       </p>
