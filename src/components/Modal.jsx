@@ -23,7 +23,7 @@ const Modal = ({tarea, setUnaTarea, eliminarTarea, realizadasToTareas}) => {
 
   return (
     <div
-    className='bg-gray-400 mx-10 h-full my-2 md:h-12 flex-row md:items-center md:justify-between ' 
+    className='bg-gray-400 mx-10 h-full my-2 md:h-12 flex-row md:flex md:items-center md:justify-between ' 
     >
         <p
         className= 'ml-6 underline'
@@ -31,7 +31,7 @@ const Modal = ({tarea, setUnaTarea, eliminarTarea, realizadasToTareas}) => {
             Titulo:{" "}
             </p>
             <span
-            className='normal-case text-base no-underline w-56 flex md:max-w-xs max-h-6 overflow-hidden ml-8 md:ml-2'
+            className='normal-case text-base no-underline w-56 flex md:flex md:max-w-xs max-h-6 overflow-hidden ml-8 md:ml-2'
             >
                 {tarea.titulo}
             </span>
@@ -43,19 +43,19 @@ const Modal = ({tarea, setUnaTarea, eliminarTarea, realizadasToTareas}) => {
             Descripcion:{" "}
             </p>
             <span
-             className='normal-case ml-8 text-base w-56 flex md:max-w-xs max-h-6 overflow-hidden'
+             className='normal-case ml-8 text-base w-56 flex-row md:flex md:max-w-xs max-h-6 overflow-hidden'
             >
                 {tarea.descripcion}
             </span>
 
 
         <p
-        className= 'ml-6 underline'
+        className= 'ml-6 underline md:w-80'
         >
             Fecha limite: {" "}
             </p>
             <span
-            className=' ml-8 normal-case text-base'
+            className=' ml-8 normal-case text-base md:w-60 md:flex '
             >
                 {tarea.fecha}
             </span>
