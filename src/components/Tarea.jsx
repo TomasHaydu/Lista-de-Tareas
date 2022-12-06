@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Edit from '../img/edit.png';
 import Delete from '../img/delete.png';
 
-const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
+const Tarea = ({tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
 
     const [isChecked, setIsChecked] = useState(false)
 
@@ -16,6 +16,12 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
     setUnaTarea({})
     }
 
+    const handleChecked = (id) => {
+        setTimeout(() => {
+            tareasToRealizadas(id)
+        }, 1000);
+    }
+
   return (
     <div
     className={isChecked===true ? ' bg-gray-500 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4' 
@@ -27,7 +33,7 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
         >
             Titulo:{" "}
             <span
-            className='normal-case text-base no-underline'
+            className='normal-case text-base no-underline flex overflow-hidden'
             >
                 {tarea.titulo}
             </span>
@@ -35,7 +41,7 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
 
         <p
         className={isChecked===true ? 'line-through mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
-        : 'mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
+        : 'mt-4 mb-4 flex-grow overflow-hidden text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
         >
             Descripcion:{" "}
             <span
@@ -97,6 +103,7 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea}) => {
                 type="checkbox" value=""
                 checked={isChecked}
                 onChange={isChecked===false ? ()=> setIsChecked(true):()=> setIsChecked(false)}
+                onClick={()=> handleChecked(tarea.id)}
                 className=" mb-2 h-5 w-5 md:w-6 md:h-6  text-teal-600 bg-gray-100 rounded-md
                  border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600
                   dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
