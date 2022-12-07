@@ -87,7 +87,7 @@ const ListaDeTareas = ({
       ) : (
         <div className="flex justify-center md:mt-28">
           <p className="font-mono text-gray-200 text-base mx-8 my-4 ">
-            {buscador.length === 0 ? "La busqueda ha fallado" : "Aun no se han agregado tareas..." }
+            {buscador.length === 0 ? "Aun no se han agregado tareas..." : "La busqueda ha fallado" }
           </p>
         </div>
       )}
