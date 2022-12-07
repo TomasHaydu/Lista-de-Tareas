@@ -19,17 +19,19 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
     const handleChecked = (id) => {
         setTimeout(() => {
             tareasToRealizadas(id)
-        }, 1000);
+        }, 500);
     }
 
   return (
     <div
-    className={isChecked===true ? ' bg-gray-500 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4' 
-    : 'bg-gray-400 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4' }
+    className={isChecked===true ? ' bg-gray-500 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4  shadow-black' 
+    : (tarea.importancia == "bajo" ? 'bg-sky-200 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4  shadow-black':
+    (tarea.importancia == "medio" ? 'bg-amber-200 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4 shadow-black' :
+     'bg-red-200 rounded-md ml-8 mr-8 shadow-md p-1 mt-4 mb-4 shadow-black')) }
     >
         <p
-        className={isChecked===true ? 'line-through mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
-        : 'mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
+        className={isChecked===true ? 'flex line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
+        : ' md:flex mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
         >
             Titulo:{" "}
             <span
@@ -40,8 +42,8 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
         </p>
 
         <p
-        className={isChecked===true ? 'line-through mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
-        : 'mt-4 mb-4 flex-grow overflow-hidden text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
+        className={isChecked===true ? 'flex line-through mt-4 mb-4 flex-grow overflow-hidden text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
+        : ' mt-4 mb-4 flex-grow overflow-hidden text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
         >
             Descripcion:{" "}
             <span
@@ -52,8 +54,8 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
         </p>
 
         <p
-        className={isChecked===true ? 'line-through mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
-        : 'mt-4 mb-4 text-gray-200 w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
+        className={isChecked===true ? 'flex line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
+        : 'md:flex mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
         >
             Fecha limite: {" "}
             <span
@@ -62,7 +64,22 @@ const Tarea = ({tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
                 {tarea.fecha}
             </span>
         </p>
-        
+
+        <p
+        className={isChecked===true ? 'line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg' 
+        : 'mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg'}
+        >
+            Importancia: {" "}
+            <span
+            className={isChecked===true ? ' font-bold text-base p-2 rounded-full text-black uppercase':
+                (tarea.importancia == "bajo" ? 'bg-sky-300 font-bold text-base p-2 rounded-full text-black uppercase':
+             (tarea.importancia == "medio" ? 'bg-amber-300 font-bold text-base p-2 rounded-full text-black uppercase' :
+              'bg-red-400 font-bold text-base p-2 rounded-full text-black uppercase')) }
+            >
+                {tarea.importancia}
+            </span>
+        </p>
+
         <div className='flex justify-around'>
             <div
             className='flex p-2 w-20 md:w-28 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer'

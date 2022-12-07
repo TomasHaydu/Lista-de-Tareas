@@ -47,7 +47,8 @@ function App() {
     <div
     className="flex-col md:flex"
     >
-      <div >
+      <div
+      >
         <Header />
       </div>
 
