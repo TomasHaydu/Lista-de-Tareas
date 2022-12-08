@@ -22,6 +22,20 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
     }
   };
 
+  
+//  const dayNow = () => {
+//    let date = new Date();
+//    let day = date.getDate();
+//    let month = date.getMonth() + 1;
+//    let year = date.getFullYear();
+//    if (month < 10) {
+//      return fechaDeHoy = `${day}-0${month}-${year}`;
+//    } else {
+//      return fechaDeHoy = `${day}-${month}-${year}`;
+//    }
+//  };
+//  console.log(dayNow)
+
   return (
     <div className="bg-gray-400 mx-10 h-full my-2 md:h-12 flex-row md:flex md:items-center md:justify-between ">
       <p className="ml-6 underline">Titulo: </p>
@@ -42,14 +56,18 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
       <p className="ml-6 mb-2 underline md:w-80">Importancia: </p>
       <span
         className={
-          tarea.importancia == "bajo"
+          tarea.importancia == "1"
             ? "bg-sky-300 font-bold p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
-            : tarea.importancia == "medio"
+            : tarea.importancia == "2"
             ? "bg-amber-300 font-bold text-base ml-2 p-1.5 rounded-xl text-black uppercase"
             : "bg-red-400 font-bold text-base ml-2 p-1.5 rounded-xl text-black uppercase"
         }
       >
-        {tarea.importancia}
+        {tarea.importancia == 1
+          ? "bajo"
+          : tarea.importancia == 2
+          ? "medio"
+          : "alto"}
       </span>
 
       <div className="flex justify-around mx-2">

@@ -15,6 +15,9 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tareas", JSON.stringify(tareas));
+    setTareas(tareas.sort((a, b) => {
+      return (new Date (a.fecha)) - (new Date (b.fecha))
+    }))
   }, [tareas]);
 
   useEffect(() => {

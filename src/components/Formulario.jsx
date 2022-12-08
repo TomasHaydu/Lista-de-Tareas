@@ -12,24 +12,6 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
 
   const [error, setError] = useState(false);
 
-
-  // const dayNow = () => {
-  //   let date = new Date();
-  //   let day = date.getDate();
-  //   let month = date.getMonth() + 1;
-  //   let year = date.getFullYear();
-  //   if (month < 10) {
-  //     fechaDeHoy = `${day}-0${month}-${year}`;
-  //   } else {
-  //     fechaDeHoy = `${day}-${month}-${year}`;
-  //   }
-  //   const fechaDeHoy =
-  //   setFecha(fechaDeHoy)
-  // };
-  // dayNow()
-
-
-
   const generarId = () => {
     const random = Math.random().toString(36).substring(2);
     const fecha = Date.now().toString(36);
@@ -151,12 +133,12 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
         <div className="flex justify-center mx-7 md:mx-16">
           <div
             className="bg-sky-300 w-1/3 rounded-l-full cursor-pointer"
-            onClick={() => setImportancia("bajo")}
+            onClick={() => setImportancia("1")}
           >
             <input
               type="radio"
-              value="bajo"
-              checked={importancia == "bajo" ? true : false}
+              value="1"
+              checked={importancia == "1" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
             />
             <label className="cursor-pointer">Bajo</label>
@@ -164,12 +146,12 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
 
           <div
             className="bg-amber-300 w-1/3 cursor-pointer"
-            onClick={() => setImportancia("medio")}
+            onClick={() => setImportancia("2")}
           >
             <input
               type="radio"
-              value="medio"
-              checked={importancia == "medio" ? true : false}
+              value="2"
+              checked={importancia == "2" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
             />
             <label className="cursor-pointer">Medio</label>
@@ -177,12 +159,12 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
 
           <div
             className="bg-red-400 w-1/3 rounded-r-full cursor-pointer"
-            onClick={() => setImportancia("alto")}
+            onClick={() => setImportancia("3")}
           >
             <input
               type="radio"
-              value="alto"
-              checked={importancia == "alto" ? true : false}
+              value="3"
+              checked={importancia == "3" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
             />
             <label className="cursor-pointer">Alto</label>
