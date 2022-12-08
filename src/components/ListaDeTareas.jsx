@@ -32,23 +32,8 @@ const ListaDeTareas = ({
     return resultadosBusqueda;
   };
 
-  const [defaultList, setDefaultList] = useState(
-    JSON.parse(localStorage.getItem("default-list")) ?? []
-  );
-
-  const [select, setSelect] = useState(
-    JSON.parse(localStorage.getItem("select")) ?? ""
-  );
-
-  useEffect(() => {
-    if (select === "" || select === "defecto") {
-      setDefaultList(tareas);
-    }
-  }, [select]);
-
   const handleSelect = (value) => {
     setSelect(value);
-    console.log(value);
 
     //Alfabetico
     if (value === "alfabetico") {
@@ -66,10 +51,6 @@ const ListaDeTareas = ({
           return 0;
         })
       );
-    }
-    //Default
-    if (value === "" || value === "defecto") {
-      setTareas(defaultList);
     }
 
     //Importancia
@@ -132,7 +113,6 @@ const ListaDeTareas = ({
             onChange={(e) => handleSelect(e.target.value)}
           >
             <option disabled value="">-Ordernar por-</option>
-            <option value="defecto">Por defecto</option>
             <option value="alfabetico">A-Z</option>
             <option value="fecha">Fecha</option>
             <option value="importancia">Importancia</option>

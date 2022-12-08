@@ -130,7 +130,7 @@ const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
 
       <div className="flex justify-around">
         <div
-          className= {dayMonthYear(tarea.fecha) < dayNow() ? "flex p-2 w-20 md:w-28 bg-slate-500 rounded-md mb-2 cursor-pointer" :
+          className= {dayMonthYear(tarea.fecha) < dayNow() ? "flex p-2 w-20 md:w-28 bg-blue-300 hover:bg-blue-400 rounded-md mb-2 cursor-pointer" :
            "flex p-2 w-20 md:w-28 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer"}
           onClick={() => setUnaTarea(tarea)}
         >
@@ -149,8 +149,8 @@ const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
         </div>
 
         <div
-          className=
-          "flex p-2 w-5/12 md:w-32 bg-red-700 rounded-md  mb-2 hover:bg-red-600 cursor-pointer"
+          className= {dayMonthYear(tarea.fecha) < dayNow() ? "flex p-2 w-5/12 md:w-32 bg-red-300 rounded-md  mb-2 hover:bg-red-400 cursor-pointer" :
+          "flex p-2 w-5/12 md:w-32 bg-red-700 rounded-md  mb-2 hover:bg-red-600 cursor-pointer"}
           onClick={handleDelete}
         >
           <button
