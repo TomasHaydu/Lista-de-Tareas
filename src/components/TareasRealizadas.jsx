@@ -9,25 +9,30 @@ const TareasRealizadas = ({
   setUnaTarea,
   eliminarTarea,
   realizadasToTareas,
+  active,
+  setActive,
 }) => {
-  const [active, setActive] = useState(false);
+
+
 
   return (
-    <div>
+    <div
+    className="col-span-1 "
+    >
       <div className="flex flex-col items-center">
         <button
-          className=" w-16 md:w-12 bg-sky-600 hover:bg-sky-500 rounded-full p-1 mr-4"
+          className=" w-12 md:w-12 bg-sky-600 hover:bg-sky-500 rounded-full p-1 mr-4"
           onClick={() => setActive(true)}
         >
           <img src={Save} alt="tareas realizadas" className="blacktowhite" />
         </button>
-        <label
-        className="mr-4 text-white font-mono text-sm"
-        >Tareas Relizadas</label>
+        <label className="mx-4 text-white font-mono text-xs md:text-xs ">
+          Tareas Relizadas
+        </label>
       </div>
 
-      {active === true ? (
-        <div className="text-white overflow-y-scroll fixed top-0 left-0 h-full w-full md:h-64 md:w-11/12 md:mx-20 md:mt-20 bg-slate-400 rounded-xl border-4 border-sky-800">
+      {active === true ? (        
+        <div className="text-white fixed top-0 left-0 h-full w-full md:h-64 md:w-11/12 md:mx-20 md:mt-20 bg-slate-400 rounded-xl border-4 border-sky-800">
           <div className="">
             <div className="flex justify-between">
               <p className="mx-4 my-3 font-bold text-gray-200 text-2xl md:mb-3 md:mt-4 text-center ">
@@ -46,16 +51,20 @@ const TareasRealizadas = ({
                 No existen tareas realizadas...
               </p>
             ) : (
-              tareasRealizadas.map((tarea) => (
-                <Modal
-                  tarea={tarea}
-                  key={tarea.id}
-                  unaTarea={unaTarea}
-                  setUnaTarea={setUnaTarea}
-                  eliminarTarea={eliminarTarea}
-                  realizadasToTareas={realizadasToTareas}
-                />
-              ))
+              <div
+              className=" overflow-y-auto md:max-h-44 "
+              >
+                {tareasRealizadas.map((tarea) => (
+                  <Modal
+                    tarea={tarea}
+                    key={tarea.id}
+                    unaTarea={unaTarea}
+                    setUnaTarea={setUnaTarea}
+                    eliminarTarea={eliminarTarea}
+                    realizadasToTareas={realizadasToTareas}
+                  />
+                ))}
+              </div>
             )}
           </div>
         </div>

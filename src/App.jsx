@@ -5,8 +5,11 @@ import ListaDeTareas from "./components/ListaDeTareas";
 
 function App() {
   const [tareas, setTareas] = useState(
-    JSON.parse(localStorage.getItem("tareas")) ?? []
+    JSON.parse(localStorage.getItem("tareas")).sort((a, b) => {
+      return new Date(a.fecha) - new Date(b.fecha);
+    }) ?? []
   );
+
   const [unaTarea, setUnaTarea] = useState({});
 
   const [tareasRealizadas, setTareasRealizadas] = useState(
@@ -15,10 +18,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tareas", JSON.stringify(tareas));
-    setTareas(tareas.sort((a, b) => {
-      return (new Date (a.fecha)) - (new Date (b.fecha))
-    }))
-  }, [tareas]);
+  }, [tareas.lenght === 0]);
 
   useEffect(() => {
     localStorage.setItem("tareas-realizadas", JSON.stringify(tareasRealizadas));
@@ -28,53 +28,52 @@ function App() {
     const listaTareasActualizadas = tareas.filter((tarea) => tarea.id !== id);
     setTareas(listaTareasActualizadas);
 
-    const listaTareasRealizadasActualizadas = tareasRealizadas.filter((tarea) => tarea.id !== id);
-    setTareasRealizadas(listaTareasRealizadasActualizadas)
+    const listaTareasRealizadasActualizadas = tareasRealizadas.filter(
+      (tarea) => tarea.id !== id
+    );
+    setTareasRealizadas(listaTareasRealizadasActualizadas);
   };
 
   const tareasToRealizadas = (id) => {
-    const realizada = tareas.find(tarea => tarea.id === id)
-    const nuevaListaTareas = tareas.filter(tarea => tarea.id !== id)
-    setTareas(nuevaListaTareas)
-    setTareasRealizadas([...tareasRealizadas, realizada])
-  }
+    const realizada = tareas.find((tarea) => tarea.id === id);
+    const nuevaListaTareas = tareas.filter((tarea) => tarea.id !== id);
+    setTareas(nuevaListaTareas);
+    setTareasRealizadas([...tareasRealizadas, realizada]);
+  };
 
   const realizadasToTareas = (id) => {
-    const toTareas = tareasRealizadas.find(tarea => tarea.id === id)
-    const tareasRealizadasActualizadas = tareasRealizadas.filter(tarea => tarea.id !== id)
-    setTareasRealizadas(tareasRealizadasActualizadas)
-    setTareas([...tareas, toTareas])
-  }
+    const toTareas = tareasRealizadas.find((tarea) => tarea.id === id);
+    const tareasRealizadasActualizadas = tareasRealizadas.filter(
+      (tarea) => tarea.id !== id
+    );
+    setTareasRealizadas(tareasRealizadasActualizadas);
+    setTareas([...tareas, toTareas]);
+  };
 
   return (
-    <div
-    className="flex-col md:flex"
-    >
-      <div
-      >
+    <div className="flex-col md:flex ">
+      <div>
         <Header />
       </div>
 
-      <div className="md:flex p-10 ">
+      <div className="md:flex p-10">
+        <Formulario
+          tareas={tareas}
+          setTareas={setTareas}
+          unaTarea={unaTarea}
+          setUnaTarea={setUnaTarea}
+        />
 
-          <Formulario
-            tareas={tareas}
-            setTareas={setTareas}
-            unaTarea={unaTarea}
-            setUnaTarea={setUnaTarea}
-          />
-
-          <ListaDeTareas
-            tareas={tareas}
-            setTareas={setTareas}
-            unaTarea={unaTarea}
-            setUnaTarea={setUnaTarea}
-            eliminarTarea={eliminarTarea}
-            tareasToRealizadas={tareasToRealizadas}
-            tareasRealizadas={tareasRealizadas}
-            realizadasToTareas={realizadasToTareas}
-          />
-
+        <ListaDeTareas
+          tareas={tareas}
+          setTareas={setTareas}
+          unaTarea={unaTarea}
+          setUnaTarea={setUnaTarea}
+          eliminarTarea={eliminarTarea}
+          tareasToRealizadas={tareasToRealizadas}
+          tareasRealizadas={tareasRealizadas}
+          realizadasToTareas={realizadasToTareas}
+        />
       </div>
     </div>
   );

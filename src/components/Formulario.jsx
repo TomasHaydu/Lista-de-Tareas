@@ -20,8 +20,6 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
   };
 
   useEffect(() => {
-
-
     if (Object.keys(unaTarea).length > 0) {
       setTitulo(unaTarea.titulo);
       setDescripcion(unaTarea.descripcion);
@@ -130,7 +128,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
           Importancia
         </p>
 
-        <div className="flex justify-center mx-7 md:mx-16">
+        <div className="flex justify-center w-4/5 m-auto">
           <div
             className="bg-sky-300 w-1/3 rounded-l-full cursor-pointer"
             onClick={() => setImportancia("1")}

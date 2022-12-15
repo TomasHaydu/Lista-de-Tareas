@@ -44,8 +44,6 @@ const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
     return result;
   };
 
-  console.log(dayNow());
-  console.log(dayMonthYear(tarea.fecha));
 
   return (
     <div
@@ -67,52 +65,53 @@ const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
       <p
         className={
           isChecked === true
-            ? "flex line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
-            : " md:flex mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
+            ? "flex-col md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg line-through"
+            : "flex-col md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg"
         }
       >
         Titulo:{" "}
-        <span className="normal-case text-base no-underline flex overflow-hidden">
+        <span className="flex md:inline normal-case text-base mx-2 max-w-xs max-h-24 overflow-auto">
           {tarea.titulo}
         </span>
       </p>
 
       <p
-        className={
+         className={
           isChecked === true
-            ? "flex line-through mt-4 mb-4 flex-grow overflow-hidden text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
-            : " mt-4 mb-4 flex-grow overflow-hidden text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
+            ? "flex-col md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg line-through"
+            : "flex-col md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg"
         }
       >
         Descripcion:{" "}
-        <span className="normal-case text-base">{tarea.descripcion}</span>
+        <span className="flex md:inline-flex normal-case text-base mx-2 max-w-xs md:max-w-md max-h-24 overflow-auto">{tarea.descripcion}</span>
       </p>
 
       <p
         className={
           isChecked === true
-            ? "flex line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
-            : "md:flex mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
+            ? "flex-col md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg line-through"
+            : "flex-col md:flex-grow my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg"
         }
       >
         Fecha limite:{" "}
-        <span className=" normal-case text-base mt-1 ml-1">
+        <span className="flex md:inline normal-case text-base mx-2 max-w-xs max-h-24">
           {dayMonthYear(tarea.fecha) === dayNow() ? "HOY" : dayMonthYear(tarea.fecha) }
         </span>
       </p>
 
       <p
-        className={
+         className={
           isChecked === true
-            ? "line-through mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
-            : "mt-4 mb-4 text-black w-4/5 m-auto rounded-md font-mono uppercase text-lg"
+            ? "flex md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg line-through"
+            : "flex md:flex-grow items-center justify-start my-2 md:my-4 mx-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg"
         }
       >
         Importancia:{" "}
         <span
+
           className={
             isChecked === true
-              ? " font-bold text-base p-2 rounded-full text-black uppercase"
+              ?  "md:flex flex-row justify-start my-2 md:my-4 md:mx-12 overflow-hidden text-black w-4/5 rounded-md font-mono uppercase text-lg line-through"
               : tarea.importancia == 1
               ? "bg-sky-300 font-bold text-base p-2 rounded-full text-black uppercase"
               : tarea.importancia == 2
