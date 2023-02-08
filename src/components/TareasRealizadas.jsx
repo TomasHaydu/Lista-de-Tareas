@@ -23,11 +23,17 @@ const TareasRealizadas = ({
         <button
           className=" w-12 md:w-12 bg-sky-600 hover:bg-sky-500 rounded-full p-1 mr-4"
           onClick={() => setActive(true)}
+          data-cy="button-tareas-realizadas"
         >
-          <img src={Save} alt="tareas realizadas" className="blacktowhite" />
+          <img src={Save} 
+          alt="tareas realizadas" 
+          className="blacktowhite"
+          data-cy="img-tareas-realizdas" />
         </button>
-        <label className="mx-4 text-white font-mono text-xs md:text-xs ">
-          Tareas Relizadas
+        <label
+         className="mx-4 text-white font-mono text-xs md:text-xs"
+         data-cy="titulo-tareas-realizadas">
+          Tareas Realizadas
         </label>
       </div>
 

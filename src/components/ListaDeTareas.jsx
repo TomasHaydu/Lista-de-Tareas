@@ -83,7 +83,9 @@ const ListaDeTareas = ({
   return (
     <div className="bg-slate-500 pt-4 mt-8 md:mt-0 md:ml-4 md:w-1/2 rounded-lg max-h-max  shadow-black shadow-2xl">
       <div className="grid grid-cols-3">
-        <p className="col-span-1 col-start-2 font-bold text-gray-200 text-2xl mx-auto mb-4 md:my-6 text-center">
+        <p 
+        className="col-span-1 col-start-2 font-bold text-gray-200 text-2xl mx-auto mb-4 md:my-6 text-center"
+        data-cy="titulo-lista">
           Sus tareas :
         </p>
         <TareasRealizadas
@@ -107,6 +109,7 @@ const ListaDeTareas = ({
               type="text"
               disabled
               className="rounded-lg p-1 w-24 md:w-64 ml-10"
+              data-cy="buscador-tareas-realizadas"
             />
           ) : (
             <input
@@ -114,6 +117,7 @@ const ListaDeTareas = ({
               onChange={(e) => handleChange(e)}
               className="rounded-lg p-1 ml-10 hover:bg-slate-100 w-24 md:w-64"
               list="tareas"
+              data-cy="buscador-tareas-realizadas"
             />
           )}
           <datalist id="tareas">
@@ -126,6 +130,7 @@ const ListaDeTareas = ({
           <select
             className="w-20 md:w-32 p-2 rounded-lg text-xs"
             onChange={(e) => handleSelect(e.target.value)}
+            data-cy="select-tareas-realizadas"
           >
             <option disabled value="">
               -Ordernar por-
@@ -160,7 +165,9 @@ const ListaDeTareas = ({
         </div>
       ) : (
         <div className="flex justify-center md:mt-28">
-          <p className="font-mono text-gray-200 text-base mx-8 my-4 ">
+          <p 
+          className="font-mono text-gray-200 text-base mx-8 my-4"
+          data-cy="ninguna-tarea">
             {buscador.length === 0
               ? "Aun no se han agregado tareas..."
               : "La busqueda ha fallado"}

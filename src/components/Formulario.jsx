@@ -8,7 +8,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [fecha, setFecha] = useState("");
-  const [importancia, setImportancia] = useState("medio");
+  const [importancia, setImportancia] = useState("");
 
   const [error, setError] = useState(false);
 
@@ -24,6 +24,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
       setTitulo(unaTarea.titulo);
       setDescripcion(unaTarea.descripcion);
       setFecha(unaTarea.fecha);
+      setImportancia(unaTarea.importancia);
     }
   }, [unaTarea]);
 
@@ -68,11 +69,14 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
 
   return (
     <div className="bg-slate-500 p-1 w-full md:w-1/2 md:mr-4 rounded-lg text-center shadow-black shadow-2xl ">
-      <p className="font-bold text-gray-200 text-2xl mb-6 mt-6 ">
+      <p
+        className="font-bold text-gray-200 text-2xl mb-6 mt-6 "
+        data-cy="titulo-formulario"
+      >
         Agrega tus tareas :
       </p>
 
-      <form className="" onSubmit={handleSubmit}>
+      <form data-cy="form" onSubmit={handleSubmit}>
         <div>
           <p
             className=" mt-4 mb-4 text-gray-200 bg-gray-400 w-4/5
@@ -85,6 +89,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
             onChange={(e) => setTitulo(e.target.value)}
             value={titulo}
             placeholder="Titulo"
+            data-cy="titulo-in-form"
             className="p-3 w-4/5 rounded-md font-mono"
           />
         </div>
@@ -101,6 +106,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
             onChange={(e) => setDescripcion(e.target.value)}
             value={descripcion}
             placeholder="Descripcion"
+            data-cy="descripcion-in-form"
             className="p-3 w-4/5 h-32 rounded-md"
           />
         </div>
@@ -117,6 +123,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
             onChange={(e) => setFecha(e.target.value)}
             value={fecha}
             placeholder={fecha}
+            data-cy="fecha-in-form"
             className="p-3 w-4/5 rounded-md "
           />
         </div>
@@ -132,12 +139,14 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
           <div
             className="bg-sky-300 w-1/3 rounded-l-full cursor-pointer"
             onClick={() => setImportancia("1")}
+            data-cy="importancia-in-form"
           >
             <input
               type="radio"
               value="1"
               checked={importancia == "1" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
+              data-cy="importancia-in-form-1"
             />
             <label className="cursor-pointer">Bajo</label>
           </div>
@@ -151,6 +160,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
               value="2"
               checked={importancia == "2" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
+              data-cy="importancia-in-form-2"
             />
             <label className="cursor-pointer">Medio</label>
           </div>
@@ -164,6 +174,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
               value="3"
               checked={importancia == "3" ? true : false}
               onChange={(e) => setImportancia(e.target.value)}
+              data-cy="importancia-in-form-3"
             />
             <label className="cursor-pointer">Alto</label>
           </div>
@@ -176,12 +187,14 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
           bg-slate-800 text-gray-300 font-mono text-center
           hover:bg-slate-700 cursor-pointer flex justify-center "
           onClick={handleSubmit}
+          
         >
           <input
             type="submit"
             value={Object.keys(unaTarea).length > 0 ? "Editar" : "Añadir"}
             readOnly
             className="ml-4 cursor-pointer"
+            data-cy="submite-form"
           />
           <img
             src={Object.keys(unaTarea).length > 0 ? Edit : Add}
