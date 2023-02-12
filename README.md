@@ -12,6 +12,7 @@ Agregar tus tareas, editarlas, eliminarlas y marcarlas como realizadas. Todo par
 
 Las librerías extra que usé son:
 	-Tailwinds CSS : https://tailwindcss.com
+	-React : https://es.reactjs.org
 
 ### Test
 El test se realizó por medio de Cypress : https://www.cypress.io
