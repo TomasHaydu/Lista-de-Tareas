@@ -1,28 +1,28 @@
 # Lista de Tareas
 
-Agregar tus tareas, editarlas, eliminarlas y marcarlas como realizadas. Todo para organizarte.
+Add your tasks. Edit, delete, and check them as completed. Everything for your organization.
 
-### Funcionalidades
-1. Agregar, editar y eliminar tareas.
-2. Realizar una búsqueda dentro de las tareas y ordenarlas.
-3. Marcar las tareas como realizadas y poder encontrarlas en “Tareas Realizadas”.
-4. Regresar o eliminar las tareas realizadas.
+### Functionality
+1. Add, edit and delete tasks.
+2. Search through the tasks and sort them.
+3. Mark the tasks as done and find them in "Done Tasks".
+4. Return or delete the completed tasks.
 
-### Librerías
+### Libraries
 
-Las librerías extra que usé son:
+The extra libraries I used are:
 	-Tailwinds CSS : https://tailwindcss.com
 	-React : https://es.reactjs.org
 
 ### Test
-El test se realizó por medio de Cypress : https://www.cypress.io
+The test was done by Cypress : https://www.cypress.io
 
-### Instalación
+### Installation
 
 	git clone https://github.com/TomasHaydu/Lista-de-Tareas-React-
 	npm i
 	npm run dev
 
-### Preview del proyecto
+### Preview of the project
 
 <img width="946" alt="lista de tareas foto" src="https://user-images.githubusercontent.com/103974880/218334818-04e7d62e-fea0-4d81-80a5-fcc7252ab200.png">
