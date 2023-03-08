@@ -47,19 +47,28 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
 
   return (
     <div className="bg-gray-400 mx-10 h-full my-2 md:max-h-96 ">
-      <div className="ml-4 flex flex-col items-start md:flex md:flex-row md:items-center md:justify-between">
-        <p className="underline">Titulo: </p>
-        <span className="normal-case text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto">
+      <div 
+      data-cy="tarea-Trealizadas"
+      className="ml-4 flex flex-col items-start md:flex md:flex-row md:items-center md:justify-between">
+        <p className="underline"
+        >Titulo: </p>
+        <span 
+         data-cy="titulo-tarea-Trealizadas"
+        className="normal-case text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto">
           {tarea.titulo}
         </span>
 
         <p className="underline">Descripcion: </p>
-        <span className="normal-case md:ml-2 text-base w-56 flex-grow md:flex-grow md:max-w-xs md:w-96 max-h-12 overflow-y-auto ">
+        <span 
+         data-cy="descripcion-tarea-Trealizadas"
+        className="normal-case md:ml-2 text-base w-56 flex-grow md:flex-grow md:max-w-xs md:w-96 max-h-12 overflow-y-auto ">
           {tarea.descripcion}
         </span>
 
         <p className="md:ml-2 underline md:w-80">Fecha limite: </p>
-        <span className=" normal-case text-base md:w-60 md:flex ">
+        <span 
+         data-cy="fecha-tarea-Trealizadas"
+        className=" normal-case text-base md:w-60 md:flex ">
           {dayMonthYear(tarea.fecha) === dayNow()
             ? "HOY"
             : dayMonthYear(tarea.fecha)}
@@ -67,6 +76,7 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
 
         <p className="md:ml-2 mb-2 underline md:w-80">Importancia: </p>
         <span
+         data-cy="importancia-tarea-Trealizadas"
           className={
             tarea.importancia == "1"
               ? "bg-sky-300 font-bold p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
@@ -86,6 +96,7 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
           <div
             className="flex items-center p-2 w-5/12 md:w-32 md:h-9 my-3 mx-2 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer"
             onClick={() => handleRegresar(tarea.id)}
+            data-cy="regresar-tarea-Trealizadas"
           >
             <button
               type="button"
@@ -104,6 +115,7 @@ const Modal = ({ tarea, setUnaTarea, eliminarTarea, realizadasToTareas }) => {
           <div
             className="flex items-center p-2 w-5/12 md:w-32 md:h-9 my-3 mx-2 bg-red-700 rounded-md  mb-2 hover:bg-red-600 cursor-pointer"
             onClick={handleDelete}
+            data-cy="eliminar-tarea-Trealizadas"
           >
             <button
               type="button"

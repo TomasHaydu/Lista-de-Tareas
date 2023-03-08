@@ -5,9 +5,7 @@ import ListaDeTareas from "./components/ListaDeTareas";
 
 function App() {
   const [tareas, setTareas] = useState(
-    JSON.parse(localStorage.getItem("tareas")).sort((a, b) => {
-      return new Date(a.fecha) - new Date(b.fecha);
-    }) ?? []
+    (JSON.parse(localStorage.getItem("tareas"))) ?? []
   );
 
   const [unaTarea, setUnaTarea] = useState({});
@@ -18,7 +16,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("tareas", JSON.stringify(tareas));
-  }, [tareas.lenght === 0]);
+  }, [tareas]);
 
   useEffect(() => {
     localStorage.setItem("tareas-realizadas", JSON.stringify(tareasRealizadas));

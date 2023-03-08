@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import Tarea from "./Tarea";
 import TareasRealizadas from "./TareasRealizadas";
@@ -39,10 +38,13 @@ const ListaDeTareas = ({
   };
 
   const handleSelect = (value) => {
+    const tareasOrden = [...tareas];
+
+    if(tareasOrden.length > 0){
     //Alfabetico
     if (value === "alfabetico" || value === "") {
       setTareas(
-        tareas.sort((a, b) => {
+        tareasOrden.sort((a, b) => {
           const tituloA = a.titulo.toLowerCase();
           const tituloB = b.titulo.toLowerCase();
           if (tituloA < tituloB) {
@@ -60,7 +62,8 @@ const ListaDeTareas = ({
     //Importancia
     if (value === "importancia") {
       setTareas(
-        tareas.sort((a, b) => {
+        tareasOrden
+          .sort((a, b) => {
             const importanciaA = a.importancia;
             const importanciaB = b.importancia;
             return importanciaA - importanciaB;
@@ -70,17 +73,20 @@ const ListaDeTareas = ({
     }
     //Fecha
     if (value === "fecha") {
-      setTareas(tareas.sort((a, b) => {
+      setTareas(
+        tareasOrden.sort((a, b) => {
           return new Date(a.fecha) - new Date(b.fecha);
         })
       );
-    }
+    } }
   };
 
   return (
     <div className="bg-slate-500 pt-4 mt-8 md:mt-0 md:ml-4 md:w-1/2 rounded-lg max-h-max  shadow-black shadow-2xl">
       <div className="grid grid-cols-3">
-        <p className="col-span-1 col-start-2 font-bold text-gray-200 text-2xl mx-auto mb-4 md:my-6 text-center">
+        <p 
+        className="col-span-1 col-start-2 font-bold text-gray-200 text-2xl mx-auto mb-4 md:my-6 text-center"
+        data-cy="titulo-lista">
           Sus tareas :
         </p>
         <TareasRealizadas
@@ -98,25 +104,34 @@ const ListaDeTareas = ({
 
       <div className="grid grid-cols-3 my-3">
         <div className="col-span-2">
-          <label className="ml-8 mr-2 text-slate-50">Buscador :</label>
+          <label className="ml-6 md:ml-8 text-slate-50">Buscador :</label>
           {tareas.length === 0 ? (
             <input
               type="text"
               disabled
-              className="rounded-lg p-1 w-24 md:w-64"
+              className="rounded-lg p-1 w-32 md:w-56 md:ml-2 ml-6"
+              data-cy="buscador-tareas-realizadas"
             />
           ) : (
             <input
               type="text"
               onChange={(e) => handleChange(e)}
-              className="rounded-lg p-1 hover:bg-slate-100 w-24 md:w-64"
+              className="rounded-lg p-1 ml-6 md:ml-2 hover:bg-slate-100 w-32 md:w-56"
+              list="tareas"
+              data-cy="buscador-tareas-realizadas"
             />
           )}
+          <datalist id="tareas">
+            {tareas.map((tarea) => (
+              <option value={tarea.titulo}></option>
+            ))}
+          </datalist>
         </div>
-        <div className="mx-2 md:mr-4 col-span-1 ">
+        <div className="mr-4 col-span-1 md:mt-0 mt-6">
           <select
             className="w-20 md:w-32 p-2 rounded-lg text-xs"
             onChange={(e) => handleSelect(e.target.value)}
+            data-cy="select-tareas-realizadas"
           >
             <option disabled value="">
               -Ordernar por-
@@ -151,7 +166,9 @@ const ListaDeTareas = ({
         </div>
       ) : (
         <div className="flex justify-center md:mt-28">
-          <p className="font-mono text-gray-200 text-base mx-8 my-4 ">
+          <p 
+          className="font-mono text-gray-200 text-base mx-8 my-4"
+          data-cy="ninguna-tarea">
             {buscador.length === 0
               ? "Aun no se han agregado tareas..."
               : "La busqueda ha fallado"}

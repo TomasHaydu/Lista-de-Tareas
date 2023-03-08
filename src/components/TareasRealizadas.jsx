@@ -23,16 +23,24 @@ const TareasRealizadas = ({
         <button
           className=" w-12 md:w-12 bg-sky-600 hover:bg-sky-500 rounded-full p-1 mr-4"
           onClick={() => setActive(true)}
+          data-cy="button-tareas-realizadas"
         >
-          <img src={Save} alt="tareas realizadas" className="blacktowhite" />
+          <img src={Save} 
+          alt="tareas realizadas" 
+          className="blacktowhite"
+          data-cy="img-tareas-realizdas" />
         </button>
-        <label className="mx-4 text-white font-mono text-xs md:text-xs ">
-          Tareas Relizadas
+        <label
+         className="mx-4 text-white font-mono text-xs md:text-xs"
+         data-cy="titulo-tareas-realizadas">
+          Tareas Realizadas
         </label>
       </div>
 
       {active === true ? (        
-        <div className="text-white fixed top-0 left-0 h-full w-full md:h-64 md:w-11/12 md:mx-20 md:mt-20 bg-slate-400 rounded-xl border-4 border-sky-800">
+        <div 
+        data-cy="modal-tareas-realizadas"
+        className="text-white fixed top-0 left-0 h-full w-full md:h-64 md:w-11/12 md:mx-20 md:mt-20 bg-slate-400 rounded-xl border-4 border-sky-800">
           <div className="">
             <div className="flex justify-between">
               <p className="mx-4 my-3 font-bold text-gray-200 text-2xl md:mb-3 md:mt-4 text-center ">
@@ -41,13 +49,16 @@ const TareasRealizadas = ({
               <button
                 className="mx-6 my-3 bg-red-300 hover:bg-red-200 w-7 h-7 rounded-full"
                 onClick={() => setActive(false)}
+                data-cy="close-tareas-realizadas"
               >
                 X
               </button>
             </div>
 
             {tareasRealizadas.length === 0 ? (
-              <p className="flex justify-center">
+              <p 
+              data-cy="any-tareas-realizadas"
+              className="flex justify-center">
                 No existen tareas realizadas...
               </p>
             ) : (
