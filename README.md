@@ -12,9 +12,7 @@ Add your tasks. Edit, delete, and check them as completed. Everything for your o
 
 ### Libraries
 
-The extra libraries I used are:
-	-Tailwinds CSS : https://tailwindcss.com
-	-React : https://es.reactjs.org
+The extra libraries I used are: -Tailwinds CSS : https://tailwindcss.com-React : https://es.reactjs.org
 
 ### Test
 The test was done by Cypress : https://www.cypress.io
