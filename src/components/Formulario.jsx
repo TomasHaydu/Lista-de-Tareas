@@ -60,8 +60,8 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
     //Reiniciar Formulario
     setTitulo("");
     setDescripcion("");
-    setFecha("");
-    setImportancia("medio");
+    setFecha(dayMonthYear(dayNow()));
+    setImportancia(2);
   };
 
   return (
