@@ -1,4 +1,5 @@
 import { useState } from "react";
+import generarId from "../utilities/IdGenerador";
 import Tarea from "./Tarea";
 import TareasRealizadas from "./TareasRealizadas";
 
@@ -11,14 +12,10 @@ const ListaDeTareas = ({
   tareasToRealizadas,
   tareasRealizadas,
   realizadasToTareas,
+  active,
+  setActive
 }) => {
   const [buscador, setBuscador] = useState("");
-
-  const [active, setActive] = useState(false);
-
-  active
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "auto");
 
   const handleChange = (e) => {
     setBuscador(e.target.value);
@@ -123,7 +120,7 @@ const ListaDeTareas = ({
           )}
           <datalist id="tareas">
             {tareas.map((tarea) => (
-              <option value={tarea.titulo}></option>
+              <option key={generarId()} value={tarea.titulo}></option>
             ))}
           </datalist>
         </div>
@@ -144,7 +141,7 @@ const ListaDeTareas = ({
       </div>
 
       {tareas &&
-      tareas.length &&
+      tareas[0] &&
       filtrarElementos(buscador, tareas).length !== 0 ? (
         <div
           className={
@@ -171,7 +168,7 @@ const ListaDeTareas = ({
           data-cy="ninguna-tarea">
             {buscador.length === 0
               ? "Aun no se han agregado tareas..."
-              : "La busqueda ha fallado"}
+              : "No hay resultados para la busqueda"}
           </p>
         </div>
       )}

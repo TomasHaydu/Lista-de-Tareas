@@ -1,26 +1,23 @@
 import { useState } from "react";
-import Error from "./Error";
 import Add from "../img/add.png";
 import Edit from "../img/edit.png";
 import { useEffect } from "react";
+import generarId from "../utilities/IdGenerador";
+import dayNow from "../utilities/DayNow";
+import dayMonthYear from "../utilities/ddmmyyyy";
 
 const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [fecha, setFecha] = useState("");
-  const [importancia, setImportancia] = useState("");
+  const [fecha, setFecha] = useState(dayMonthYear(dayNow()));
+  const [importancia, setImportancia] = useState(2);
 
   const [error, setError] = useState(false);
 
-  const generarId = () => {
-    const random = Math.random().toString(36).substring(2);
-    const fecha = Date.now().toString(36);
-
-    return random + fecha;
-  };
+  const existeUnaTareaSeleccionada = Object.keys(unaTarea).length > 0;
 
   useEffect(() => {
-    if (Object.keys(unaTarea).length > 0) {
+    if (existeUnaTareaSeleccionada) {
       setTitulo(unaTarea.titulo);
       setDescripcion(unaTarea.descripcion);
       setFecha(unaTarea.fecha);
@@ -32,7 +29,7 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
     e.preventDefault();
 
     //Error campos vacios
-    if ([titulo, descripcion, fecha, importancia].includes("")) {
+    if ([titulo, descripcion].includes("".trim())) {
       setError(true);
       return;
     }
@@ -180,24 +177,34 @@ const Formulario = ({ tareas, setTareas, unaTarea, setUnaTarea }) => {
           </div>
         </div>
 
-        {error ? <Error /> : ""}
+        {error ? (
+          <div>
+            <p
+              data-cy="alerta"
+              className="mt-4 text-gray-200 bg-red-600 w-4/5 m-auto rounded-md font-mono uppercase text-lg"
+            >
+              Todos los campos son obligatorios
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
 
         <div
           className=" m-auto p-4 text-xl w-4/5 rounded-md mt-4 mb-6
           bg-slate-800 text-gray-300 font-mono text-center
           hover:bg-slate-700 cursor-pointer flex justify-center "
           onClick={handleSubmit}
-          
         >
           <input
             type="submit"
-            value={Object.keys(unaTarea).length > 0 ? "Editar" : "Añadir"}
+            value={existeUnaTareaSeleccionada ? "Editar" : "Añadir"}
             readOnly
             className="ml-4 cursor-pointer"
             data-cy="submite-form"
           />
           <img
-            src={Object.keys(unaTarea).length > 0 ? Edit : Add}
+            src={existeUnaTareaSeleccionada ? Edit : Add}
             alt="add"
             className="w-8 h-8 ml-4 blacktowhite"
           />

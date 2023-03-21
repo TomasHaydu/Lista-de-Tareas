@@ -5,7 +5,7 @@ import ListaDeTareas from "./components/ListaDeTareas";
 
 function App() {
   const [tareas, setTareas] = useState(
-    (JSON.parse(localStorage.getItem("tareas"))) ?? []
+    JSON.parse(localStorage.getItem("tareas")) ?? []
   );
 
   const [unaTarea, setUnaTarea] = useState({});
@@ -21,6 +21,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tareas-realizadas", JSON.stringify(tareasRealizadas));
   }, [tareasRealizadas]);
+
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    active
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [active]);
 
   const eliminarTarea = (id) => {
     const listaTareasActualizadas = tareas.filter((tarea) => tarea.id !== id);
@@ -71,6 +79,8 @@ function App() {
           tareasToRealizadas={tareasToRealizadas}
           tareasRealizadas={tareasRealizadas}
           realizadasToTareas={realizadasToTareas}
+          active={active}
+          setActive={setActive}
         />
       </div>
     </div>

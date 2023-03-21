@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Edit from "../img/edit.png";
 import Delete from "../img/delete.png";
+import dayNow from "../utilities/DayNow";
+import dayMonthYear from "../utilities/ddmmyyyy"
 
 const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -21,28 +23,7 @@ const Tarea = ({ tarea, setUnaTarea, eliminarTarea, tareasToRealizadas }) => {
     }, 500);
   };
 
-  const dayNow = () => {
-    let date = new Date();
-    let day = date.getDate() < 9 ? "0" + date.getDate() : date.getDate();
-    let month =
-      date.getMonth() + 1 < 9
-        ? "0" + (date.getMonth() + 1)
-        : date.getMonth() + 1;
-    let year = date.getFullYear();
-    if (day < 10) {
-      return `0${day}-${month}-${year}`;
-    } else {
-      return `${day}-${month}-${year}`;
-    }
-  };
 
-  const dayMonthYear = (fecha) => {
-    const [year, month, day] = fecha.split("-");
-
-    const result = [day, month, year].join("-");
-
-    return result;
-  };
 
 
   return (
