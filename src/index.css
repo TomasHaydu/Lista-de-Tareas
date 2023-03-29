@@ -4,7 +4,7 @@
 
 :root{
     --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+    background: linear-gradient(180deg, rgba(248,250,252,1) 0%, rgba(219,228,230,1) 100%);
 }
 
 .blacktowhite {
