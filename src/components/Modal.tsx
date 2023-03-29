@@ -43,33 +43,32 @@ const Modal: React.FC<Props> = ({
         data-cy="tarea-Trealizadas"
         className="ml-4 flex flex-col items-start md:flex md:flex-row md:items-center md:justify-between"
       >
+        <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-center md:w-4/6">
         <p className="underline">Titulo: </p>
         <span
           data-cy="titulo-tarea-Trealizadas"
-          className="normal-case text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto"
+          className="normal-case justify-center md:justify-start text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto"
         >
           {tarea.titulo}
         </span>
-
-        <p className="md:ml-2 underline md:w-80">Fecha limite: </p>
+        <p className="md:ml-2 underline md:w-40">Fecha limite: </p>
         <span
           data-cy="fecha-tarea-Trealizadas"
-          className=" normal-case text-base md:w-60 md:flex "
+          className=" normal-case text-base md:w-60 md:flex md:justify-start "
         >
           {dayMonthYear(tarea.fecha) === dayNow()
             ? "HOY"
             : dayMonthYear(tarea.fecha)}
         </span>
-
-        <p className="md:ml-2 mb-2 underline md:w-80">Importancia: </p>
+        <p className="md:ml-2 mb-2 underline md:w-40">Importancia: </p>
         <span
           data-cy="importancia-tarea-Trealizadas"
           className={
             tarea.importancia == 1
-              ? "bg-sky-300 font-bold p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
+              ? "bg-sky-300 font-bold md:justify-start mr-16  p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
               : tarea.importancia == 2
-              ? "bg-amber-300 font-bold text-base ml-2 p-1.5 rounded-xl text-black uppercase"
-              : "bg-red-400 font-bold text-base ml-2 p-1.5 rounded-xl text-black uppercase"
+              ? "bg-amber-300 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
+              : "bg-red-400 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
           }
         >
           {tarea.importancia == 1
@@ -78,7 +77,7 @@ const Modal: React.FC<Props> = ({
             ? "medio"
             : "alto"}
         </span>
-
+        </div>
         <div className="flex justify-around mx-1">
           <div
             className="flex items-center p-2 w-5/12 md:w-32 md:h-9 my-3 mx-2 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer"
