@@ -21,7 +21,7 @@ const Modal: React.FC<Props> = ({
     const response = confirm("Desea ELIMINAR esta tarea?");
 
     if (response) {
-      eliminarTarea(tarea.id!);
+      eliminarTarea(tarea.id ? tarea.id : "");
     }
 
     setUnaTarea(InitialValue);
@@ -33,50 +33,60 @@ const Modal: React.FC<Props> = ({
     );
 
     if (response) {
-      realizadasToTareas(id);
+      const animationTarea: HTMLElement = document.getElementById(
+        `tarea${id}`
+      )!;
+      animationTarea.classList.add("tareas-regresar");
+
+      setTimeout(() => {
+        realizadasToTareas(id);
+      }, 150);
     }
   };
 
   return (
-    <div className="bg-gray-400 mx-10 h-full my-2 md:max-h-96">
+    <div
+      className="bg-gray-400 mx-10 h-full my-2 md:max-h-96"
+      id={`tarea${tarea.id}`}
+    >
       <div
         data-cy="tarea-Trealizadas"
         className="ml-4 flex flex-col items-start md:flex md:flex-row md:items-center md:justify-between"
       >
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-start md:items-center md:w-4/6">
-        <p className="underline">Titulo: </p>
-        <span
-          data-cy="titulo-tarea-Trealizadas"
-          className="normal-case justify-center md:justify-start text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto"
-        >
-          {tarea.titulo}
-        </span>
-        <p className="md:ml-2 underline md:w-40">Fecha limite: </p>
-        <span
-          data-cy="fecha-tarea-Trealizadas"
-          className=" normal-case text-base md:w-60 md:flex md:justify-start "
-        >
-          {dayMonthYear(tarea.fecha) === dayNow()
-            ? "HOY"
-            : dayMonthYear(tarea.fecha)}
-        </span>
-        <p className="md:ml-2 mb-2 underline md:w-40">Importancia: </p>
-        <span
-          data-cy="importancia-tarea-Trealizadas"
-          className={
-            tarea.importancia == 1
-              ? "bg-sky-300 font-bold md:justify-start mr-16  p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
+          <p className="underline">Titulo: </p>
+          <span
+            data-cy="titulo-tarea-Trealizadas"
+            className="normal-case justify-center md:justify-start text-base no-underline w-56 flex md:flex-grow md:max-w-xs md:w-96 max-h-12 ml-8 md:ml-2 overflow-y-auto"
+          >
+            {tarea.titulo}
+          </span>
+          <p className="md:ml-2 underline md:w-40">Fecha limite: </p>
+          <span
+            data-cy="fecha-tarea-Trealizadas"
+            className=" normal-case text-base md:w-60 md:flex md:justify-start "
+          >
+            {dayMonthYear(tarea.fecha) === dayNow()
+              ? "HOY"
+              : dayMonthYear(tarea.fecha)}
+          </span>
+          <p className="md:ml-2 mb-2 underline md:w-40">Importancia: </p>
+          <span
+            data-cy="importancia-tarea-Trealizadas"
+            className={
+              tarea.importancia == 1
+                ? "bg-sky-300 font-bold md:justify-start mr-16  p-1 mx-8 text-base md:ml-2 md:p-1.5 rounded-xl text-black uppercase"
+                : tarea.importancia == 2
+                ? "bg-amber-300 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
+                : "bg-red-400 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
+            }
+          >
+            {tarea.importancia == 1
+              ? "bajo"
               : tarea.importancia == 2
-              ? "bg-amber-300 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
-              : "bg-red-400 font-bold md:justify-start mr-16 text-base ml-2 p-1.5 rounded-xl text-black uppercase"
-          }
-        >
-          {tarea.importancia == 1
-            ? "bajo"
-            : tarea.importancia == 2
-            ? "medio"
-            : "alto"}
-        </span>
+              ? "medio"
+              : "alto"}
+          </span>
         </div>
         <div className="flex justify-around mx-1">
           <div

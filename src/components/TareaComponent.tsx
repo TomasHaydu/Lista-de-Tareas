@@ -33,6 +33,13 @@ const TareaComponent: React.FC<Props> = ({
     setUnaTarea(InitialValue);
   };
 
+  const handleEdit = ():void => {
+    const tareaId:HTMLElement = document.getElementById(`tarea${tarea.id}`)!
+    tareaId.classList.add("tareas-edit")
+                    
+    setUnaTarea(tarea)
+  }
+
   const handleChecked = (id: string): void => {
     if(tarea.id  || tarea.id !== ""){
     setTimeout(() => {
@@ -44,16 +51,17 @@ const TareaComponent: React.FC<Props> = ({
 
   return (
     <div
+    id={`tarea${tarea.id}`}
       className={
         isChecked
-          ? " bg-gray-500 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black"
+          ? " bg-gray-500 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black tareas-in"
           : dayMonthYear(tarea.fecha) < dayNow()
-          ? " bg-gray-600 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black"
+          ? " bg-gray-600 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black tareas-in"
           : tarea.importancia == 1
-          ? "bg-sky-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black"
+          ? "bg-sky-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4  shadow-black tareas-in"
           : tarea.importancia == 2
-          ? "bg-amber-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4 shadow-black"
-          : "bg-red-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4 shadow-black"
+          ? "bg-amber-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4 shadow-black tareas-in"
+          : "bg-red-200 rounded-md mx-6 shadow-md p-1 mt-4 mb-4 shadow-black tareas-in"
       }
       data-cy="tarea"
     >
@@ -142,7 +150,7 @@ const TareaComponent: React.FC<Props> = ({
                   ? "flex p-2 w-20 md:w-28 bg-blue-300 hover:bg-blue-400 rounded-md mb-2 cursor-pointer"
                   : "flex p-2 w-20 md:w-28 bg-blue-700 rounded-md mb-2 hover:bg-blue-600 cursor-pointer"
               }
-              onClick={() => setUnaTarea(tarea)}
+              onClick={handleEdit}
               data-cy="editar-tarea"
             >
               <button

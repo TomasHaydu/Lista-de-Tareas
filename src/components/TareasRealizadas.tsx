@@ -23,7 +23,7 @@ const TareasRealizadas: React.FC<Props> = ({
   setActive,
 }) => {
   return (
-    <div className="col-span-1 ">
+    <div className="col-span-1 z-50">
       <div className="flex flex-col items-center">
         <button
           className=" w-12 md:w-12 bg-sky-600 hover:bg-sky-500 rounded-full p-1 mr-4"

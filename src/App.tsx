@@ -35,12 +35,20 @@ function App() {
     const listaTareasActualizadas: Tarea[] = tareas.filter(
       (tarea) => tarea.id !== id
     );
+
+    const animationTarea:HTMLElement = document.getElementById(`tarea${id}`)!
+      animationTarea.classList.add("tareas-out")
+
+    setTimeout(() => {
+      
     setTareas(listaTareasActualizadas);
 
     const listaTareasRealizadasActualizadas: Tarea[] = tareasRealizadas.filter(
       (tarea) => tarea.id !== id
     );
     setTareasRealizadas(listaTareasRealizadasActualizadas);
+    }, 300);
+
   };
 
   const tareasToRealizadas = (id: string): void => {
